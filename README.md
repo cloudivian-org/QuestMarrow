@@ -86,6 +86,28 @@ node test.js
 - `turtle.js` — the Free Draw turtle-graphics mode
 - `test.js` — headless check that every level can be solved
 
+## 📜 License
+
+QuestMarrow is **source-available**, licensed under the
+[PolyForm Noncommercial License 1.0.0](LICENSE):
+
+- ✅ **Free for noncommercial use** — personal, family, kids, learning, hobby
+  projects, schools, and other noncommercial organizations may use, copy, and
+  modify it without asking.
+- ⛔ **Commercial use needs approval** — selling, bundling into a paid product,
+  or commercial hosting requires separate written permission.
+- © The copyright holder (**cloudivian-org**) retains ownership and all rights
+  not granted by the license.
+
+Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests are
+welcome but are merged only with the maintainer's approval.
+
+For commercial licensing or other permissions, open an issue or email
+**vikasj1in@gmail.com**.
+
+> Note: the LICENSE and these notes describe intent in good faith but are not
+> legal advice. For commercially important matters, consult a qualified attorney.
+
 ## 🔗 Project
 <https://github.com/cloudivian-org/QuestMarrow>
 
