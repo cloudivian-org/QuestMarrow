@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuestMarrow 🤖 — Coding Adventures for Kids</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar">
+    <div class="brand" id="homeBtn">🤖 QuestMarrow</div>
+    <div class="stars-total">⭐ <span id="totalStars">0</span> / <span id="maxStars">0</span></div>
+  </header>
+
+  <!-- ===== HOME ===== -->
+  <main id="screen-home" class="screen">
+    <h1 class="hero-title">Learn to Code by Playing! 🎮</h1>
+    <p class="hero-sub">Guide your hero through puzzles, build your own levels, or draw with code.</p>
+
+    <div class="home-controls">
+      <div class="picker">
+        <span class="picker-label">Choose your hero:</span>
+        <div class="picker-row" id="charPicker"></div>
+      </div>
+      <div class="picker">
+        <span class="picker-label">Theme:</span>
+        <div class="picker-row" id="themePicker"></div>
+      </div>
+    </div>
+
+    <div class="mode-tiles">
+      <div class="mode-tile" id="tilePlay"><span class="tile-emoji">🎮</span><span>Play Levels</span></div>
+      <div class="mode-tile" id="tileCreate"><span class="tile-emoji">✏️</span><span>Create a Level</span></div>
+      <div class="mode-tile" id="tileDraw"><span class="tile-emoji">🎨</span><span>Free Draw</span></div>
+    </div>
+
+    <div class="worlds" id="worlds"></div>
+  </main>
+
+  <!-- ===== GAME SCREEN ===== -->
+  <main id="screen-game" class="screen hidden">
+    <div class="game-wrap">
+      <section class="panel left-panel">
+        <div class="level-head">
+          <button class="back-btn" id="backBtn">← Back</button>
+          <h2 id="levelTitle">Level</h2>
+        </div>
+        <div class="instructions" id="instructions"></div>
+
+        <div class="palette" id="palette"></div>
+
+        <label class="editor-label">Your Code:</label>
+        <textarea id="editor" class="editor" spellcheck="false" autocomplete="off"></textarea>
+
+        <div class="controls">
+          <button class="btn run" id="runBtn">▶ Run</button>
+          <button class="btn reset" id="resetBtn">↺ Reset</button>
+          <button class="btn hint" id="hintBtn">💡 Hint</button>
+        </div>
+        <div class="message" id="message"></div>
+      </section>
+
+      <section class="panel right-panel">
+        <div class="stage-info">
+          <span id="gemInfo">💎 0 / 0</span>
+        </div>
+        <div class="grid-stage" id="stage"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== LEVEL EDITOR SCREEN ===== -->
+  <main id="screen-editor" class="screen hidden">
+    <div class="game-wrap">
+      <section class="panel left-panel">
+        <div class="level-head">
+          <button class="back-btn" id="edBack">← Home</button>
+          <h2>✏️ Level Editor</h2>
+        </div>
+        <div class="ed-fields">
+          <label>Name<br /><input id="edName" type="text" maxlength="22" value="My Level" /></label>
+          <label>Width<br /><input id="edW" type="number" min="3" max="9" value="5" /></label>
+          <label>Height<br /><input id="edH" type="number" min="3" max="9" value="5" /></label>
+        </div>
+        <div class="ed-tools" id="edTools"></div>
+        <p class="ed-help">Pick a tool, then click squares. Every level needs a Start 🤖 and a Flag 🚩.
+          Collect all 💎 to win. The robot starts facing <b>right ▶</b>.</p>
+        <div class="controls">
+          <button class="btn run" id="edPlay">▶ Test Play</button>
+          <button class="btn reset" id="edSave">💾 Save</button>
+          <button class="btn hint" id="edExport">⬇ Export</button>
+        </div>
+        <div class="message" id="edMsg"></div>
+        <div class="saved-list" id="edSavedList"></div>
+      </section>
+      <section class="panel right-panel">
+        <div class="stage-info"><span id="edStageInfo">Build your map →</span></div>
+        <div class="grid-stage" id="edStage"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== FREE DRAW (TURTLE) SCREEN ===== -->
+  <main id="screen-turtle" class="screen hidden">
+    <div class="game-wrap">
+      <section class="panel left-panel">
+        <div class="level-head">
+          <button class="back-btn" id="ttBack">← Home</button>
+          <h2>🎨 Free Draw</h2>
+        </div>
+        <div class="instructions" id="ttHelp"></div>
+        <div class="palette" id="ttExamples"></div>
+        <label class="editor-label">Your Drawing Code:</label>
+        <textarea id="ttEditor" class="editor" spellcheck="false" autocomplete="off"></textarea>
+        <div class="controls">
+          <button class="btn run" id="ttRun">▶ Draw</button>
+          <button class="btn reset" id="ttClear">🧽 Clear</button>
+        </div>
+        <div class="message" id="ttMsg"></div>
+      </section>
+      <section class="panel right-panel">
+        <div class="stage-info"><span>🐢 Turtle Canvas</span></div>
+        <canvas id="ttCanvas" class="turtle-canvas" width="440" height="440"></canvas>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== WIN MODAL ===== -->
+  <div class="modal-overlay hidden" id="winModal">
+    <div class="modal">
+      <div class="confetti" id="confetti"></div>
+      <h2>🎉 Level Complete!</h2>
+      <div class="modal-stars" id="modalStars">⭐⭐⭐</div>
+      <p id="modalMsg">Awesome job!</p>
+      <div class="modal-btns">
+        <button class="btn reset" id="replayBtn">↺ Replay</button>
+        <button class="btn run" id="nextBtn">Next Level →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="levels.js"></script>
+  <script src="game.js"></script>
+  <script src="editor.js"></script>
+  <script src="turtle.js"></script>
+</body>
+</html>
